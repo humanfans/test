@@ -23,3 +23,5 @@ jobs:
         run: sudo apt install ./*deb
       - name: ✅ 验证安装
         run: apt policy linglong-bin
+      - name: 查看架构
+        run: uname -a
