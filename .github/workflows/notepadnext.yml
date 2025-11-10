@@ -19,7 +19,7 @@ jobs:
         run: 'tar -zxvf ubuntu-24.04-x86_64.tar.gz'
       - name: 📦 更新并安装 Linglong 工具
         run: sudo apt install ./*deb
-      - #name: 查看当前目录
+      #- #name: 查看当前目录
         #run: 'll-cli install org.deepin.base'
       - name: 编译notepad
         run: ll-builder build
