@@ -1,0 +1,46 @@
+version: "1"
+
+package:
+  id: com.github.notepadnext.linyaps
+  name: NotepadNext #set your application name
+  version: 0.12.0.2
+  kind: app
+  description: |
+    跨平台的Notepad++的实现 #set a brief text to introduce your application.
+
+command:
+  - NotepadNext
+
+base: org.deepin.base/25.2.1
+#runtime: org.deepin.Runtime/23.0.1
+#set the runtime environment if you need, a example of setting deepin runtime is as follows.
+#runtime:
+#org.deepin.runtime.dtk/23.1.0
+
+#set the source if you need, a simple example of git is as follows.
+sources:
+  - kind: git
+    url: "https://gitee.com/humanfans/NotepadNext.git"
+#    version: master
+    commit: 702740dcf84c18594199e8b91810fd73386ad53a 
+buildext:
+  apt:
+    build_depends: []
+#      - qtbase5-dev
+#      - qt5-qmake
+#      - qt5-default
+#      - qtbase5-dev-tools
+#      - qttools5-dev-tools
+#      - qtbase5-private-dev
+#      - libqt5x11extras5-dev
+#      - build-essential
+#      - git
+    depend: []
+
+build: |
+    cd /project/linglong/sources/NotepadNext.git
+    mkdir build
+    cd build
+    qmake PREFIX=$PREFIX ../src/NotepadNext.pro
+    make -j$(nproc)
+    make install
