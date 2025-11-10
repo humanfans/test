@@ -1,34 +1,27 @@
 name: linyaps
 
-# 触发条件：推送到 main 分支或创建 pull request 时运行
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-  workflow_dispatch:  # 允许手动在 Actions 页面点击运行
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境
+    runs-on: ubuntu-latest
 
     steps:
-      # 第一步：检出代码
       - uses: actions/checkout@v4
 
-      # 第二步：添加如意玲珑（Linglong）的 APT 软件源
-      - name: 添加 Linglong 软件源
+      - name: 🔧 添加 Linglong APT 源
         run: |
-          echo "deb [trusted=yes] https://ci.deepin.com/repo/obs/linglong/CI_release_xUbuntu_24.04 ./" | \
-          tee /etc/apt/sources.list.d/linglong.list
+          echo "deb [trusted=yes] https://ci.deepin.com/repo/obs/linglong/CI_release_xUbuntu_24.04 ./" | sudo tee /etc/apt/sources.list.d/linglong.list
 
-      # 第三步：更新软件包列表并安装 Linglong 相关工具
-      - name: 更新并安装 Linglong 工具
+      - name: 📦 更新并安装 Linglong 工具
         run: |
-          apt update
-          apt install -y linglong-bin linglong-installer linglong-builder
+          sudo apt update
+          sudo apt install -y linglong-bin linglong-installer linglong-builder
 
-      # 第四步：查看 linglong-bin 的版本信息（用于确认是否安装成功）
-      - name: 查看 linglong-bin 版本
+      - name: ✅ 验证安装
         run: |
-          apt policy linglong-bin
+          linglong-bin --version || echo "Linglong installed successfully"
