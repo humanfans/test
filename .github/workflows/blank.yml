@@ -23,6 +23,6 @@ jobs:
       #  run: |
        #   cd ubuntu
       #    sudo apt install ./*deb
-     - name: ✅ 验证安装
-       run: |
+      - name: ✅ 验证安装
+        run: |
           linglong-bin --version || echo "Linglong installed successfully"
