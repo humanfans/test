@@ -1,4 +1,4 @@
-name: linyaps
+name: linyaps-notepadnext
 
 on:
   push:
@@ -17,11 +17,12 @@ jobs:
         run:  'wget https://gitee.com/LFRon/Linyaps-generic-linux-SIG/releases/download/1.9.12/ubuntu-24.04-x86_64.tar.gz'
       - name: 🔧 添加 Linglong APT 源
         run: 'tar -zxvf ubuntu-24.04-x86_64.tar.gz'
-     # - name: 📦 解压
-        #run: sh ./install.sh
       - name: 📦 更新并安装 Linglong 工具
         run: sudo apt install ./*deb
-      - name: ✅ 验证安装
-        run: apt policy linglong-bin
-      - name: 查看架构
-        run: uname -a
+      - name: 查看当前目录
+        run: pwd
+      - name: 编译notepad
+        run: ll-builder build
+      - name: 导出二进制文件
+        run: ll-builder export --layer
+        
