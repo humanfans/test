@@ -14,14 +14,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: 🔧 添加 Linglong APT 源
-        run: |
-          echo "deb [trusted=yes] https://ci.deepin.com/repo/obs/linglong/CI_release_xUbuntu_24.04 ./" | sudo tee /etc/apt/sources.list.d/linglong.list
-
+        run:  'wget https://gitee.com/LFRon/Linyaps-generic-linux-SIG/releases/download/1.9.12/ubuntu-24.04-x86_64.tar.gz'
+      - name: 📦 解压
+        run: 'tar -zxvf ubuntu-24.04-x86_64.tar.gz -C ./ubuntu '
       - name: 📦 更新并安装 Linglong 工具
         run: |
-          sudo apt update
-          sudo apt install -y linglong-bin linglong-installer linglong-builder
-
+          cd ubuntu
+          sudo apt install ./*deb
       - name: ✅ 验证安装
         run: |
           linglong-bin --version || echo "Linglong installed successfully"
