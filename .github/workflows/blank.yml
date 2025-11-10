@@ -15,12 +15,14 @@ jobs:
 
       - name: 🔧 添加 Linglong APT 源
         run:  'wget https://gitee.com/LFRon/Linyaps-generic-linux-SIG/releases/download/1.9.12/ubuntu-24.04-x86_64.tar.gz'
-      - name: 📦 解压
+      - name: 🔧 添加 Linglong APT 源
         run: 'tar -zxvf ubuntu-24.04-x86_64.tar.gz'
-      - name: 📦 更新并安装 Linglong 工具
-        run: |
-          cd ubuntu
-          sudo apt install ./*deb
-      - name: ✅ 验证安装
-        run: |
-          linglong-bin --version || echo "Linglong installed successfully"
+      - name: 📦 解压
+        run: ls
+     #- name: 📦 更新并安装 Linglong 工具
+      #  run: |
+       #   cd ubuntu
+      #    sudo apt install ./*deb
+     # - name: ✅ 验证安装
+      #  run: |
+       #   linglong-bin --version || echo "Linglong installed successfully"
