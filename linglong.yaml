@@ -20,9 +20,9 @@ base: org.deepin.base/25.2.1
 #set the source if you need, a simple example of git is as follows.
 sources:
   - kind: git
-    url: "https://gitee.com/humanfans/NotepadNext.git"
+    url: "https://github.com/dail8859/NotepadNext.git"
 #    version: master
-    commit: 702740dcf84c18594199e8b91810fd73386ad53a 
+    commit: ebabc63f5a3f5d4cc557bfd99f048ea95fdd2ca4 
 buildext:
   apt:
     build_depends: []
