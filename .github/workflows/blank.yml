@@ -19,7 +19,8 @@ jobs:
       # 第二步：添加如意玲珑（Linglong）的 APT 软件源
       - name: 添加 Linglong 软件源
         run: |
-          echo "deb [trusted=yes] https://ci.deepin.com/repo/obs/linglong :/CI:/release/xUbuntu_24.04/ ./" | sudo tee /etc/apt/sources.list.d/linglong.list
+          echo "deb [trusted=yes] https://ci.deepin.com/repo/obs/linglong/CI_release_xUbuntu_24.04 ./" | \
+      sudo tee /etc/apt/sources.list.d/linglong.list
 
       # 第三步：更新软件包列表并安装 Linglong 相关工具
       - name: 更新并安装 Linglong 工具
