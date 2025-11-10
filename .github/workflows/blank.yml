@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: 🔧 添加 Linglong APT 源
         run:  'wget https://gitee.com/LFRon/Linyaps-generic-linux-SIG/releases/download/1.9.12/ubuntu-24.04-x86_64.tar.gz'
@@ -23,6 +23,6 @@ jobs:
       #  run: |
        #   cd ubuntu
       #    sudo apt install ./*deb
-     # - name: ✅ 验证安装
-      #  run: |
-       #   linglong-bin --version || echo "Linglong installed successfully"
+     - name: ✅ 验证安装
+       run: |
+          linglong-bin --version || echo "Linglong installed successfully"
