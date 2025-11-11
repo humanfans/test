@@ -43,3 +43,5 @@ jobs:
           draft: false
           prerelease: false
           files: ${{ env.FOUND_LAYER }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 
