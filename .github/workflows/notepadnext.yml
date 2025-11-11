@@ -26,3 +26,20 @@ jobs:
       - name: 导出二进制文件
         run: ll-builder export --layer
         
+      - name: 找出生成的 layer 文件并重命名（可选）
+        id: find_layer
+        run: |
+          LAYER_FILE=$(find . -type f -name "*.layer" | head -n 1)
+          echo "FOUND_LAYER=$LAYER_FILE" >> $GITHUB_ENV
+          echo "LAYER_FILENAME=${LAYER_FILE##*/}" >> $GITHUB_ENV
+
+      # 只在 push 到 main 分支时发布
+      - name: 🚀 发布到 GitHub Release
+        if: github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.sha }}
+          draft: false
+          prerelease: false
+          files: ${{ env.FOUND_LAYER }}
