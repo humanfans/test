@@ -44,4 +44,4 @@ jobs:
           prerelease: false
           files: ${{ env.FOUND_LAYER }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.pat-for-release }} 
